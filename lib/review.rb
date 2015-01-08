@@ -16,7 +16,7 @@ class Review
 
   private
   def extract_content
-    @noko.css("ul.reviews").css("li")[0]
+    @noko.css("ul.reviews > li")[@review_num]
   end
   def extract_meta(property)
     extract_content.css("meta[itemprop='#{property}']").attr("content").value
