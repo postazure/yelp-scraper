@@ -1,6 +1,10 @@
 class NokoParser
-  def self.file_loader(file)
+  def initialize(file)
     f = File.open(file)
-    Nokogiri::HTML(f)
+    @data = Nokogiri::HTML(f)
+  end
+  def reviews
+    data = @data.css("ul.reviews > li").map {|review| review}
+    data
   end
 end
