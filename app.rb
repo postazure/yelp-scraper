@@ -1,8 +1,11 @@
 require "Nokogiri"
 require "RestClient"
+require "Mechanize"
+require "pry"
 require_relative "./lib/noko_parser"
 require_relative "./lib/review"
-web_data = RestClient.get("http://www.yelp.com/biz/fat-angel-san-francisco", user_agent: "Chrome")
+source_url = "http://www.yelp.com/biz/fat-angel-san-francisco"
+web_data = RestClient.get(source_url, user_agent: "Chrome")
 # web_data = RestClient.get("http://www.google.com")
 noko_file = NokoParser.new(web_data)
 # noko_file = NokoParser.new(File.open("./data/fat-angel.html"))
